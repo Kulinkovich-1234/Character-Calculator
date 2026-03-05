@@ -38,49 +38,6 @@
    ```bash
    git clone https://github.com/Kulinkovich-1234/Character-Calculator.git
    cd Character-Calculator
-Here's an updated README.md for your v2.0.0 release:
-
-```markdown name=README.md url=https://github.com/Kulinkovich-1234/Character-Calculator/blob/fe6a5eaed2688e8a5e7e5e090475c58c665ec783/README.md
-# 特征标计算器 (Character Table Decomposer)
-
-一个用于点群特征标计算的交互式 Python 程序，内置数十种常见点群的特征标表，支持张量积、对称积、反对称积、球谐函数表示、多项式表示等多种操作，并能将任意可约表示分解为不可约表示的直和。
-
----
-
-## 📦 版本信息
-- **版本**：2.0.0
-- **作者**：Jianwen Ma
-- **日期**：2026-03-05
-- **许可证**：[MIT License](LICENSE)
-- **版权**：Copyright © 2026 Jianwen Ma
-
----
-
-## ✨ 主要特性
-- **内置大量点群**：包含 $C_1, C_s, C_i, C_n, C_{nv}, C_{nh}, D_n, D_{nh}, D_{nd}, S_n, T, T_h, T_d, O, O_h$ 等共 30 余个点群，覆盖了从低对称性到高对称性的常见群。
-- **可约表示分解**：输入任意特征标向量，程序自动将其分解为不可约表示的直和，并输出各不可约表示的重数。
-- **张量积计算**：计算两个表示的张量积，并给出分解结果。
-- **对称积与反对称积**：支持任意阶对称积 $\mathrm{Sym}^n$ 和反对称积 $\mathrm{Alt}^n$，基于置换群共轭类公式精确计算。
-- **球谐函数表示**：根据角量子数 $l$（或轨道字母 s, p, d, …）生成球谐函数（原子轨道）的特征标向量。
-- **多项式表示**：生成向量表示的 $n$ 次对称幂（即 $n$ 次齐次多项式空间）的特征标。
-- **幂次特征标**：计算 $\chi(g^n)$，即对群元素取幂后的特征标。
-- **自定义特征标存储**：可将计算结果或手动输入的特征标保存到本地文件（`stored_characters.json`），方便后续调用。
-- **特征标表验证**：内置验证功能，检查特征标表的正交性、维数平方和、张量积分解等是否正确，确保数据的可靠性。
-- **交互式命令行**：简洁的菜单驱动界面，无需记忆命令，适合教学和科研使用。
-
----
-
-## 🔧 安装与运行
-
-### 环境要求
-- Python 3.6 或更高版本
-- NumPy（用于复数运算和向量处理）
-
-### 安装步骤
-1. 克隆本仓库到本地：
-   ```bash
-   git clone https://github.com/Kulinkovich-1234/Character-Calculator.git
-   cd Character-Calculator
    ```
 
 2. （可选）创建并激活虚拟环境：
@@ -202,12 +159,3 @@ Here's an updated README.md for your v2.0.0 release:
 ---
 
 **尽情探索点群的表示世界吧！**
-```
-
-## Key Updates for v2.0.0:
-
-1. **Version**: Updated from 1.2.0 to 2.0.0
-2. **Date**: Updated from 2026-02-13 to 2026-03-05 (current date)
-3. **Repository URL**: Fixed the clone URL from the placeholder `yourusername` to the correct `Kulinkovich-1234/Character-Calculator`
-
-The README is now ready for your v2.0.0 release. Would you like me to push this updated version to your v2.0.0 branch?
