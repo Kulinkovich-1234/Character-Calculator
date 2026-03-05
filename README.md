@@ -38,3 +38,176 @@
    ```bash
    git clone https://github.com/Kulinkovich-1234/Character-Calculator.git
    cd Character-Calculator
+Here's an updated README.md for your v2.0.0 release:
+
+```markdown name=README.md url=https://github.com/Kulinkovich-1234/Character-Calculator/blob/fe6a5eaed2688e8a5e7e5e090475c58c665ec783/README.md
+# 特征标计算器 (Character Table Decomposer)
+
+一个用于点群特征标计算的交互式 Python 程序，内置数十种常见点群的特征标表，支持张量积、对称积、反对称积、球谐函数表示、多项式表示等多种操作，并能将任意可约表示分解为不可约表示的直和。
+
+---
+
+## 📦 版本信息
+- **版本**：2.0.0
+- **作者**：Jianwen Ma
+- **日期**：2026-03-05
+- **许可证**：[MIT License](LICENSE)
+- **版权**：Copyright © 2026 Jianwen Ma
+
+---
+
+## ✨ 主要特性
+- **内置大量点群**：包含 $C_1, C_s, C_i, C_n, C_{nv}, C_{nh}, D_n, D_{nh}, D_{nd}, S_n, T, T_h, T_d, O, O_h$ 等共 30 余个点群，覆盖了从低对称性到高对称性的常见群。
+- **可约表示分解**：输入任意特征标向量，程序自动将其分解为不可约表示的直和，并输出各不可约表示的重数。
+- **张量积计算**：计算两个表示的张量积，并给出分解结果。
+- **对称积与反对称积**：支持任意阶对称积 $\mathrm{Sym}^n$ 和反对称积 $\mathrm{Alt}^n$，基于置换群共轭类公式精确计算。
+- **球谐函数表示**：根据角量子数 $l$（或轨道字母 s, p, d, …）生成球谐函数（原子轨道）的特征标向量。
+- **多项式表示**：生成向量表示的 $n$ 次对称幂（即 $n$ 次齐次多项式空间）的特征标。
+- **幂次特征标**：计算 $\chi(g^n)$，即对群元素取幂后的特征标。
+- **自定义特征标存储**：可将计算结果或手动输入的特征标保存到本地文件（`stored_characters.json`），方便后续调用。
+- **特征标表验证**：内置验证功能，检查特征标表的正交性、维数平方和、张量积分解等是否正确，确保数据的可靠性。
+- **交互式命令行**：简洁的菜单驱动界面，无需记忆命令，适合教学和科研使用。
+
+---
+
+## 🔧 安装与运行
+
+### 环境要求
+- Python 3.6 或更高版本
+- NumPy（用于复数运算和向量处理）
+
+### 安装步骤
+1. 克隆本仓库到本地：
+   ```bash
+   git clone https://github.com/Kulinkovich-1234/Character-Calculator.git
+   cd Character-Calculator
+   ```
+
+2. （可选）创建并激活虚拟环境：
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # Linux/Mac
+   venv\Scripts\activate      # Windows
+   ```
+
+3. 安装依赖：
+   ```bash
+   pip install numpy
+   ```
+
+4. 运行程序：
+   ```bash
+   python character_table_decomposer.py
+   ```
+
+---
+
+## 🚀 使用指南
+
+### 启动与点群选择
+运行程序后，你会看到按分类排序的点群列表，例如：
+```
+  Nonaxial groups:
+    1. C_1
+    2. C_s
+  Cn groups:
+    3. C_2
+    4. C_3
+    ...
+  Cubic groups:
+    30. T
+    31. T_h
+    32. T_d
+    33. O
+    34. O_h
+  V. 验证所有特征标表
+  0. 退出程序
+```
+输入对应的数字（如 `1`）即可进入该点群的操作界面。直接回车默认选择 `O_h` 群。
+
+### 群内操作菜单
+进入某个群后，会显示该群的共轭类顺序、类大小和操作菜单：
+```
+操作菜单:
+  1. 特征标分解
+  2. 张量积
+  3. 对称积和反对称积
+  4. 表示的直和
+  5. 操作幂次的特征标
+  6. 管理存储的特征标
+  7. 查看特征标表
+  8. 验证特征标表
+  9. 置换群 Sn 的共轭类
+  10. 返回点群选择
+```
+根据提示输入数字执行相应功能。
+
+### 输入特征标的途径
+程序提供多种方式输入特征标：
+1. **手动输入**：按共轭类顺序输入一串数字（支持复数，如 `1+2j`）。
+2. **使用存储的特征标**：从已保存的列表中选取。
+3. **使用不可约表示**：直接选择该群的某个不可约表示。
+4. **球谐函数/原子轨道**：输入角量子数 $l$ 或轨道字母（s, p, d, f, …），程序自动生成该轨道的特征标。
+5. **多项式**：输入次数 $n$，生成向量表示的 $n$ 次对称幂（即多项式表示）的特征标。
+
+### 示例
+#### 示例 1：分解一个可约表示
+在 $O_h$ 群中，输入手动特征标 `[5, -1, 1, -1, 1, -3, -1, 0, 1, 1]`，程序输出：
+```
+不可约表示分解: T1u ⊕ Eg ⊕ A1g
+```
+并询问是否保存该特征标。
+
+#### 示例 2：计算张量积
+选择两个不可约表示，例如 $T_{1u} \otimes E_g$，程序给出张量积特征标及其分解。
+
+#### 示例 3：生成 d 轨道特征标
+在 $O_h$ 群中，选择"球谐函数/原子轨道"，输入 `d` 或 `2`，程序输出 $l=2$ 的特征标，并自动分解（通常为 $E_g \oplus T_{2g}$）。
+
+---
+
+## 📚 内置点群列表
+程序包含以下点群的特征标表（按分类排序）：
+
+| 分类          | 点群                                                                 |
+|---------------|----------------------------------------------------------------------|
+| Nonaxial      | $C_1, C_s$                                                         |
+| $C_n$       | $C_2, C_3, C_4, C_5, C_6$                                          |
+| $C_{nv}$     | $C_{2v}, C_{3v}, C_{4v}, C_{5v}, C_{6v}$                           |
+| $C_{nh}$     | $C_{2h}, C_{3h}, C_{4h}, C_{5h}, C_{6h}$                           |
+| $D_n$       | $D_2, D_3, D_4, D_5, D_6$                                          |
+| $D_{nh}$     | $D_{2h}, D_{3h}, D_{4h}, D_{5h}, D_{6h}$                           |
+| $D_{nd}$     | $D_{2d}, D_{3d}, D_{4d}, D_{5d}, D_{6d}$                           |
+| $S_n$       | $C_i (=S_2), S_4, S_6$                                             |
+| Cubic         | $T, T_h, T_d, O, O_h$                                              |
+
+所有表的维数平方和、正交性等均已通过程序内建的验证功能确认。
+
+---
+
+## 📄 许可证
+本项目采用 MIT 许可证。您可以自由使用、修改和分发本软件，但需保留原始版权声明。详见 [LICENSE](LICENSE) 文件。
+
+---
+
+## 👤 作者
+- **Jianwen Ma** – 开发和维护
+- 如有问题或建议，欢迎在 GitHub 上提交 Issue 或 Pull Request。
+
+---
+
+## 🙏 致谢
+感谢所有群表示论教材和参考资料，本程序的特征标表数据主要参考了经典的群论书籍和在线资源，并经过严格验证。
+
+---
+
+**尽情探索点群的表示世界吧！**
+```
+
+## Key Updates for v2.0.0:
+
+1. **Version**: Updated from 1.2.0 to 2.0.0
+2. **Date**: Updated from 2026-02-13 to 2026-03-05 (current date)
+3. **Repository URL**: Fixed the clone URL from the placeholder `yourusername` to the correct `Kulinkovich-1234/Character-Calculator`
+
+The README is now ready for your v2.0.0 release. Would you like me to push this updated version to your v2.0.0 branch?
