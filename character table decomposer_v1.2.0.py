@@ -7,14 +7,14 @@
 
 版本: 1.2.0
 作者: Jianwen Ma
-日期: 2025-02-13
-版权: Copyright (c) 2025 Jianwen Ma
+日期: 2026-02-13
+版权: Copyright (c) 2026 Kulinkovich-1234
 许可证: MIT License (详见下文)
 """
 __author__ = "Jianwen Ma"
 __version__ = "1.2.0"
 __license__ = "MIT"
-__copyright__ = "Copyright (c) 2025 Jianwen Ma"
+__copyright__ = "Copyright (c) 2026 Kulinkovich-1234"
 
 import numpy as np
 import json
@@ -2577,4 +2577,5 @@ def main():
             print(f"发生错误: {e}")
 
 if __name__ == "__main__":
+
     main()
