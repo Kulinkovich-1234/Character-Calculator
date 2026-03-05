@@ -54,7 +54,7 @@
 
 4. 运行程序：
    ```bash
-   python character_table_decomposer.py
+   python main.py
    ```
 
 ---
@@ -64,38 +64,43 @@
 ### 启动与点群选择
 运行程序后，你会看到按分类排序的点群列表，例如：
 ```
-  Nonaxial groups:
-    1. C_1
-    2. C_s
-  Cn groups:
-    3. C_2
-    4. C_3
-    ...
-  Cubic groups:
-    30. T
-    31. T_h
-    32. T_d
-    33. O
-    34. O_h
-  V. 验证所有特征标表
-  0. 退出程序
+Nonaxial groups:
+   1. C_1
+   2. C_s
+
+Cn groups:
+   3. C_2
+   4. C_3
+   5. C_4
+
+...
+
+Cubic groups:
+  36. O
+  37. O_h
+  38. T
+  39. T_d
+  40. T_h
+
+  V. Verify all tables
+  0. Exit
 ```
 输入对应的数字（如 `1`）即可进入该点群的操作界面。直接回车默认选择 `O_h` 群。
 
 ### 群内操作菜单
 进入某个群后，会显示该群的共轭类顺序、类大小和操作菜单：
 ```
-操作菜单:
-  1. 特征标分解
-  2. 张量积
-  3. 对称积和反对称积
-  4. 表示的直和
-  5. 操作幂次的特征标
-  6. 管理存储的特征标
-  7. 查看特征标表
-  8. 验证特征标表
-  9. 置换群 Sn 的共轭类
-  10. 返回点群选择
+Options:
+  1. Decompose character
+  2. Tensor product
+  3. Symmetric/antisymmetric products
+  4. Direct sum
+  5. Power of character χ(g^n)
+  6. Manage stored characters
+  7. View character table
+  8. Verify character table
+  9. Conjugacy classes of S_n
+  0. Exit
 ```
 根据提示输入数字执行相应功能。
 
