@@ -24,6 +24,7 @@ def display_welcome():
     print("  ✓ Symmetric & antisymmetric powers")
     print("  ✓ Spherical harmonics / Atomic orbitals")
     print("  ✓ Polynomials (Sym^n)")
+    print("  ✓ IR and Raman active modes")
     print("  ✓ Power characters χ(g^n)")
     print("  ✓ Character storage to JSON")
     print("  ✓ Table verification")

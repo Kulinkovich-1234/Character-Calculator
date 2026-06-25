@@ -271,7 +271,40 @@ class CharacterCalculator:
             power_char.append(character[class_idx])
         
         return power_char
-    
+
+    def get_ir_active_irreps(self) -> List[str]:
+        """
+        Determine IR-active irreducible representations.
+
+        IR activity is determined by decomposing the vector representation
+        into irreducible representations. Only the irrep names are returned,
+        multiplicities are discarded.
+        """
+        if self.vector_char is None:
+            raise ValueError(
+                f"Vector representation not defined for {self.table.name}. "
+                f"Cannot determine IR activity."
+            )
+
+        return list(self.decompose(self.vector_char).keys())
+
+    def get_raman_active_irreps(self) -> List[str]:
+        """
+        Determine Raman-active irreducible representations.
+
+        Raman activity is determined by decomposing the symmetric square
+        of the vector representation: Sym^2(V). Only the irrep names are
+        returned, multiplicities are discarded.
+        """
+        if self.vector_char is None:
+            raise ValueError(
+                f"Vector representation not defined for {self.table.name}. "
+                f"Cannot determine Raman activity."
+            )
+
+        sym2 = self.symmetric_product_general(self.vector_char, 2)
+        return list(self.decompose(sym2).keys())
+
     def symmetric_product_general(self, character: List, n: int) -> List:
         """
         Calculate Sym^n(χ) using permutation group formula
@@ -470,18 +503,20 @@ class CharacterCalculator:
         return classes
 
     @staticmethod
-    def format_decomposition(decomp: Dict[str, int]) -> str:
+    def format_decomposition(decomp: Union[Dict[str, int], List[str]]) -> str:
         """Format decomposition as string"""
         if not decomp:
             return "0 (empty)"
-        
-        parts = []
-        for name, mult in sorted(decomp.items()):
-            if mult == 1:
-                parts.append(name)
-            else:
-                parts.append(f"{mult}{name}")
-        
+
+        if isinstance(decomp, dict):
+            parts = []
+            for name, mult in sorted(decomp.items()):
+                if mult == 1:
+                    parts.append(name)
+                else:
+                    parts.append(f"{mult}{name}")
+        else:
+            parts = sorted(decomp)
         return " ⊕ ".join(parts)
     
     def print_character_table(self):

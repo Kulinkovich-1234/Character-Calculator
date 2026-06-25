@@ -56,6 +56,8 @@ class CalculatorUI:
                 self._verify_table()
             elif choice == "9":
                 self._conjugate_classes_sn()
+            elif choice == "10":
+                self._show_spectroscopy_activities()
             else:
                 print("✗ Invalid choice")
     
@@ -71,6 +73,7 @@ class CalculatorUI:
         print("  7. View character table")
         print("  8. Verify character table")
         print("  9. Conjugacy classes of S_n")
+        print(" 10. IR/Raman active irreps")
         print("  0. Exit")
     
     # ==================== Main Operations ====================
@@ -235,6 +238,24 @@ class CalculatorUI:
             print(f"\n✓ All checks passed!")
         else:
             print(f"\n✗ Some checks failed")
+    
+    def _show_spectroscopy_activities(self):
+        """Display IR and Raman active irreducible representations"""
+        try:
+            ir_irreps = self.calc.get_ir_active_irreps()
+            raman_irreps = self.calc.get_raman_active_irreps()
+        except ValueError as e:
+            print(f"\n✗ {e}")
+            return
+        
+        ir_str = self.calc.format_decomposition(ir_irreps)
+        raman_str = self.calc.format_decomposition(raman_irreps)
+        
+        print(f"\n{self.calc.table.name} Spectroscopy Activity:")
+        print("=" * 80)
+        print(f"IR active irreps:    {ir_str}")
+        print(f"Raman active irreps: {raman_str}")
+        print("=" * 80)
     
     def _conjugate_classes_sn(self):
         """Show conjugacy classes of S_n"""
