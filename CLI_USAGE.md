@@ -36,7 +36,7 @@
 ARROW     → "->"
 ```
 
-运算符优先级（低 → 高）：$\oplus$ / $+$（直和）< $\otimes$ / $\times$ / $*$（张量积）< 函数 / 原子
+运算符优先级（低 → 高）： $\oplus$  / $+$（直和）< $\otimes$ / $\times$ / $*$（张量积）< 函数 / 原子
 
 ### 特征标引用
 
@@ -57,7 +57,7 @@ ARROW     → "->"
 | `Alt^n(expr)` | `Alt^3([T1u])` | $\text{Alt}^n(\chi)$ |
 | `Pow^n(expr)` | `Pow^4([T1u])` | $\chi^{\otimes n}$（张量幂） |
 | `gPow^n(expr)` | `gPow^2([T1u])` | $\chi(g^n)$（幂次特征标） |
-| `Y(n)` | `Y(3)` | 球谐函数 $Y_l$，$l$ 为角量子数 |
+| `Y(n)` | `Y(3)` | 球谐函数 $Y_l$， $l$ 为角量子数 |
 | `Y(letter)` | `Y(d)`, `Y(f)` | 球谐函数，字母 s~o |
 | `Poly(n)` | `Poly(3)` | $\text{Sym}^n(\mathbf{V})$ |
 | `P(n)` | `P(3)` | $\text{Poly}(n)$ 的简写 |
@@ -225,7 +225,7 @@ Y(2)
 
 1. 确定分子所属点群
 2. 统计每个对称操作下**位置保持不变**的原子数 $n_{\text{fixed}}(g)$
-3. 程序自动计算并给出 $\Gamma_{\text{total}}$、$\Gamma_{\text{trans}}$、$\Gamma_{\text{rot}}$、$\Gamma_{\text{vib}}$ 的分解
+3. 程序自动计算并给出 $\Gamma_{\text{total}}$ 、 $\Gamma_{\text{trans}}$ 、 $\Gamma_{\text{rot}}$、 $\Gamma_{\text{vib}}$ 的分解
 4. 列出红外和拉曼活性振动模及其重数
 
 ```bash
@@ -236,7 +236,7 @@ Y(2)
 
 ### NH₃（氨，C₃v 群）
 
-4 个原子（N + 3H），$3N = 12$。C₃v 有 3 个类：$E$、$2C_3$、$3\sigma_v$。
+4 个原子（N + 3H）， $3N = 12$ 。C₃v 有 3 个类： $E$ 、 $2C_3$ 、 $3\sigma_v$ 。
 
 | 操作 | 不动原子 | $\chi_{\text{vec}}$ | $\chi_{\text{total}}$ |
 |------|---------|---------------------|----------------------|
@@ -284,7 +284,7 @@ Y(2)
     → 4 Raman-active vibration mode(s)
 ```
 
-$\Gamma_{\text{vib}} = 2A_1 \oplus 2E$，共 6 个简正模：
+$\Gamma_{\text{vib}} = 2A_1 \oplus 2E$ ，共 6 个简正模：
 
 | 模式 | 对称性 | 描述 |
 |------|--------|------|
@@ -292,10 +292,12 @@ $\Gamma_{\text{vib}} = 2A_1 \oplus 2E$，共 6 个简正模：
 | $\nu_2$ | $A_1$ | 伞型反转（"氨钟"） |
 | $\nu_3$ | $E$ | 反对称伸缩（二重简并） |
 | $\nu_4$ | $E$ | 反对称弯曲（二重简并） |
-![[Pasted image 20260628012615.png]]
+
+![NH3-vibration](imgs/Pasted%20image%2020260628012615.png)
+
 ### CH₄（甲烷，T_d 群）
 
-5 个原子（C + 4H），$3N = 15$。T_d 有 5 个类。
+5 个原子（C + 4H）， $3N = 15$ 。T_d 有 5 个类。
 
 | 操作 | 不动原子 |
 |------|---------|
@@ -345,12 +347,12 @@ $\Gamma_{\text{vib}} = 2A_1 \oplus 2E$，共 6 个简正模：
     → 4 Raman-active vibration mode(s)
 ```
 
-$\Gamma_{\text{vib}} = A_1 \oplus E \oplus 2T_2$，共 9 个简正模（$3N-6 = 9$）。
-这是四面体 $XY_4$ 分子的标准分类：$\nu_1(A_1)$ 对称伸缩、$\nu_2(E)$ 变形、$\nu_3(T_2)$ 反对称伸缩、$\nu_4(T_2)$ 反对称弯曲。
-![[Pasted image 20260628012640.png]]
+$\Gamma_{\text{vib}} = A_1 \oplus E \oplus 2T_2$，共 9 个简正模（ $3N-6 = 9$ ）。
+这是四面体 $XY_4$ 分子的标准分类： $\nu_1(A_1)$  对称伸缩、 $\nu_2(E)$  变形、 $\nu_3(T_2)$  反对称伸缩、 $\nu_4(T_2)$  反对称弯曲。
+![methane-vibration](imgs/Pasted%20image%2020260628012640.png)
 ### H₂O（水，C₂v 群）
 
-3 个原子（O + 2H），$3N = 9$。C₂v 有 4 个类。
+3 个原子（O + 2H）， $3N = 9$ 。C₂v 有 4 个类。
 
 | 操作 | 不动原子 |
 |------|---------|
@@ -392,11 +394,11 @@ $\Gamma_{\text{vib}} = A_1 \oplus E \oplus 2T_2$，共 9 个简正模（$3N-6 = 
   Raman active: A1 ×2, B1 ×1  →  3 Raman-active mode(s)
 ```
 
-$\Gamma_{\text{vib}} = 2A_1 \oplus B_1$，对应 $\nu_1(A_1)$ 对称伸缩、$\nu_2(A_1)$ 弯曲、$\nu_3(B_1)$ 反对称伸缩。三个模均为红外和拉曼活性。
-![[Pasted image 20260628012727.png]]
+$\Gamma_{\text{vib}} = 2A_1 \oplus B_1$ ，对应 $\nu_1(A_1)$ 对称伸缩、 $\nu_2(A_1)$ 弯曲、 $\nu_3(B_1)$ 反对称伸缩。三个模均为红外和拉曼活性。
+![SO2-vibration](imgs/Pasted%20image%2020260628012727.png)
 ### BF₃（三氟化硼，D₃h 群）
 
-4 个原子（B + 3F），$3N = 12$。D₃h 有 6 个类。
+4 个原子（B + 3F）， $3N = 12$ 。D₃h 有 6 个类。
 
 | 操作 | 不动原子 |
 |------|---------|
@@ -447,15 +449,15 @@ $\Gamma_{\text{vib}} = 2A_1 \oplus B_1$，对应 $\nu_1(A_1)$ 对称伸缩、$\n
     → 3 Raman-active vibration mode(s)
 ```
 
-$\Gamma_{\text{vib}} = A_1' \oplus A_2'' \oplus 2E'$，共 6 个简正模（$3N-6 = 6$）。
-其中 $\nu_1(A_1')$ 对称伸缩为拉曼活性，$\nu_2(A_2'')$ 伞型为红外活性，
+$\Gamma_{\text{vib}} = A_1' \oplus A_2'' \oplus 2E'$ ，共 6 个简正模（ $3N-6 = 6$ ）。
+其中 $\nu_1(A_1')$ 对称伸缩为拉曼活性， $\nu_2(A_2'')$ 伞型为红外活性，
 $\nu_3(E')$ 反对称伸缩和 $\nu_4(E')$ 反对称弯曲均为红外和拉曼活性。
-![[Pasted image 20260628015647.png]]
+![SO3-vibration](imgs/Pasted%20image%2020260628015647.png)
 
 ### B₁₂ 笼（I_h 群）
 
-十二硼烷阴离子 $\text{B}_{12}\text{H}_{12}^{2-}$ 的硼笼骨架（不考虑氢原子）：12 个 B 原子位于正二十面体顶点。
-$3N = 36$。I_h 有 10 个类。
+十二硼烷阴离子 $B_{12}H_{12}^{2-}$ 的硼笼骨架（不考虑氢原子）：12 个 B 原子位于正二十面体顶点。
+$3N = 36$ 。I_h 有 10 个类。
 
 | 操作 | 不动原子 | 说明 |
 |------|---------|------|
@@ -510,11 +512,11 @@ $3N = 36$。I_h 有 10 个类。
     → 3 Raman-active vibration mode(s)
 ```
 
-$\Gamma_{\text{vib}} = A_g \oplus G_g \oplus G_u \oplus 2H_g \oplus H_u \oplus T_{1u} \oplus T_{2u}$，
-共 $30$ 个振动自由度（$3N-6 = 36-6 = 30$）。
+$\Gamma_{\text{vib}} = A_g \oplus G_g \oplus G_u \oplus 2H_g \oplus H_u \oplus T_{1u} \oplus T_{2u}$ ，
+共 $30$ 个振动自由度（ $3N-6 = 36-6 = 30$ ）。
 
-尽管有 30 个振动自由度，I_h 高度对称性使红外仅 **1 条谱线**（$T_{1u}$，三重简并），
-拉曼仅 **3 条谱线**（$A_g$ 单峰 + $2 \times H_g$ 五重峰）。
+尽管有 30 个振动自由度，I_h 高度对称性使红外仅 **1 条谱线**（ $T_{1u}$，三重简并），
+拉曼仅 **3 条谱线**（ $A_g$ 单峰 + $2 \times H_g$ 五重峰）。
 这就是硼笼化合物振动光谱极其简洁的原因。
 
 ---
@@ -551,15 +553,15 @@ Sym^3([T2g])
   Decomposition: A1g ⊕ T1g ⊕ 2T2g
 ```
 
-得到 $^2E_g$、$^2T_{1g}$、$^2T_{2g}$（自旋二重态）。
+得到 $^2E_g$ 、 $^2T_{1g}$ 、 $^2T_{2g}$（自旋二重态）。
 
 这与 Tanabe-Sugano 图中 $d^3$ 组态在八面体场中的谱项标记
-$^4A_{2g}$、$^2E_g$、$^2T_{1g}$、$^2T_{2g}$ 完全吻合。
+$^4A_{2g}$ 、 $^2E_g$ 、 $^2T_{1g}$ 、 $^2T_{2g}$ 完全吻合。
 
-![[Pasted image 20260628013433.png]]
+![d3-Tanabe-Sugano](imgs/Pasted%20image%2020260628013433.png)
 ### 2. 石英晶体的压电效应
 
-石英（$\alpha$-SiO₂）属于 $D_3$ 点群。压电效应由三阶张量 $d_{ijk}$ 描述，
+石英（ $\alpha$-SiO₂）属于 $D_3$ 点群。压电效应由三阶张量 $d_{ijk}$ 描述，
 其变换性质为向量表示 $\mathbf{V}$ 与二阶对称应力张量 $\text{Sym}^2(\mathbf{V})$ 的张量积：
 
 $$
@@ -579,7 +581,7 @@ Sym^2([V])
   Decomposition: 2A1 ⊕ 2E
 ```
 
-**步骤 2：$\mathbf{V} \otimes \text{Sym}^2(\mathbf{V})$ 的分解：**
+**步骤 2： $\mathbf{V} \otimes \text{Sym}^2(\mathbf{V})$ 的分解：**
 ```bash
 > python main.py -g D_3 "[V] * Sym^2([V])"
 ```
@@ -611,7 +613,7 @@ Sym^2(Sym^2([V]))
   Decomposition: 3A1g ⊕ 3Eg ⊕ T1g ⊕ 3T2g
 ```
 
-$A_{1g}$ 重数为 **3** → 立方晶系 $O_h$ 有 **3 个独立弹性常数**（$C_{11}$、$C_{12}$、$C_{44}$）。
+$A_{1g}$ 重数为 **3** → 立方晶系 $O_h$ 有 **3 个独立弹性常数**（ $C_{11}$ 、 $C_{12}$ 、 $C_{44}$ ）。
 
 不同对称性的弹性常数对比：
 
@@ -660,7 +662,7 @@ $d$ 轨道在 $O_h$ 场中分裂为 $e_g \oplus t_{2g}$。
 | 有中心反演 | ❌ | ✅（有 g/u 下标） |
 | $\Delta$ | $\frac{4}{9}\Delta_{\text{oct}}$ | $\Delta_{\text{oct}}$ |
 
-### 5. Jahn-Teller 效应：$E_g \otimes e_g$ 耦合
+### 5. Jahn-Teller 效应： $E_g \otimes e_g$ 耦合
 
 Jahn-Teller 定理指出非线性分子在电子态简并时必然畸变以消除简并。
 活性振动模由电子态与振动模张量积的**对称部分**给出。
@@ -696,13 +698,13 @@ Alt^2([Eg])
   Decomposition: A2g
 ```
 
-结论：$\text{Sym}^2(E_g) = A_{1g} \oplus E_g$，其中
+结论： $\text{Sym}^2(E_g) = A_{1g} \oplus E_g$ ，其中
 - $A_{1g}$：全对称呼吸模，不消除简并
 - $\boldsymbol{E_g}$：**Jahn-Teller 活性模**，使分子四方畸变，将 $E_g$ 电子态分裂
 
-### 6. 六角晶系（$D_{6h}$）的弹性常数
+### 6. 六角晶系（ $D_{6h}$ ）的弹性常数
 
-对比立方晶系 $O_h$，六角晶系（石墨、h-BN、ZnO）属于 $D_{6h}$：
+对比立方晶系 $O_h$ ，六角晶系（石墨、h-BN、ZnO）属于 $D_{6h}$：
 
 ```bash
 > python main.py -g D_6h "Sym^2(Sym^2([V]))"
@@ -714,7 +716,7 @@ Sym^2(Sym^2([V]))
   Decomposition: 5A1g ⊕ B1g ⊕ B2g ⊕ 3E1g ⊕ 4E2g
 ```
 
-$A_{1g}$ 重数为 **5** → 六角晶系有 **5 个独立弹性常数**（$C_{11}$、$C_{12}$、$C_{13}$、$C_{33}$、$C_{44}$）。
+$A_{1g}$ 重数为 **5** → 六角晶系有 **5 个独立弹性常数**（ $C_{11}$ 、 $C_{12}$ 、 $C_{13}$ 、 $C_{33}$ 、 $C_{44}$ ）。
 
 ### 7. C₆₀ 富勒烯的振动光谱
 
@@ -773,7 +775,7 @@ I_h 群有 10 个共轭类。在 C₆₀ 中，每个对称操作下保持不动
 ```
 
 C₆₀ 的 174 个振动模式中，红外活性仅限 $T_{1u}$（出现 4 次），
-拉曼活性仅限 $A_g \oplus H_g$（$A_g$ 出现 2 次、$H_g$ 出现 8 次）。
+拉曼活性仅限 $A_g \oplus H_g$（ $A_g$ 出现 2 次、 $H_g$ 出现 8 次）。
 因此实验上 C₆₀ 红外光谱仅 **4 条谱线**、拉曼光谱仅 **10 条谱线**。
 这便是对称性降维打击的经典范例——174 个自由度压缩为 14 条谱线。
 
@@ -787,7 +789,7 @@ C₆₀ 的 174 个振动模式中，红外活性仅限 $T_{1u}$（出现 4 次�
 ### 8. 非线性光学：二阶谐波产生（SHG）
 
 GaAs、InP 等 III-V 族半导体属于 $T_d$ 点群（无中心反演），允许二阶非线性效应。
-倍频张量 $d_{ijk} \in \mathbf{V} \otimes \text{Sym}^2(\mathbf{V})$：
+倍频张量 $d_{ijk} \in \mathbf{V} \otimes \text{Sym}^2(\mathbf{V})$ ：
 
 ```bash
 > python main.py -g T_d "[V] * Sym^2([V])"
@@ -799,7 +801,7 @@ GaAs、InP 等 III-V 族半导体属于 $T_d$ 点群（无中心反演），允�
   Decomposition: A1 ⊕ E ⊕ 2T1 ⊕ 3T2
 ```
 
-$A_1$ 重数为 **1** → 闪锌矿结构仅 **1 个独立 SHG 系数** $d_{14}$（$d_{14} = d_{25} = d_{36}$）。
+$A_1$ 重数为 **1** → 闪锌矿结构仅 **1 个独立 SHG 系数** $d_{14}$（ $d_{14} = d_{25} = d_{36}$ ）。
 
 ---
 
