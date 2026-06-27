@@ -1,4 +1,6 @@
 __pycache__/
+.obsidian/
 *.pyc
 *.pyo
 *.pyd
+character_calculator.zip

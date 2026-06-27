@@ -391,29 +391,32 @@ class CharacterCalculator:
         return sym_char, sym_decomp, antisym_char, antisym_decomp
     
     # ==================== Verification Methods ====================
-    
+
     def verify_table(self, verbose: bool = False) -> bool:
-        """Verify character table consistency"""
+        """Verify character table consistency comprehensively"""
         checks = {
             'class_count': self._check_class_count(),
             'dimension_sum': self._check_dimension_sum(),
             'dimensions_divide_order': self._check_dimensions_divide(),
             'row_orthogonality': self._check_row_orthogonality(),
-            'column_orthogonality': self._check_column_orthogonality()
+            'column_orthogonality': self._check_column_orthogonality(),
+            'tensor_products': self._check_tensor_products(),
+            'sym_products': self._check_sym_products(),
+            'antisym_products': self._check_antisym_products(),
         }
-        
+
         if verbose:
             print(f"\nVerifying {self.table.name}:")
             for check_name, passed in checks.items():
                 status = "✓" if passed else "✗"
                 print(f"  {status} {check_name}")
-        
+
         return all(checks.values())
-    
+
     def _check_class_count(self) -> bool:
         """Number of classes equals number of irreps"""
         return len(self.class_sizes) == len(self.irreps)
-    
+
     def _check_dimension_sum(self) -> bool:
         """Σ dim² = |G|"""
         dim_sum = sum(
@@ -421,7 +424,7 @@ class CharacterCalculator:
             for char in self.irreps.values()
         )
         return dim_sum == self.group_order
-    
+
     def _check_dimensions_divide(self) -> bool:
         """Each dim divides |G|"""
         for char in self.irreps.values():
@@ -429,7 +432,7 @@ class CharacterCalculator:
             if self.group_order % dim != 0:
                 return False
         return True
-    
+
     def _check_row_orthogonality(self) -> bool:
         """⟨χ_i, χ_j⟩ = δ_ij * |G|"""
         irreps_list = list(self.irreps.items())
@@ -444,7 +447,7 @@ class CharacterCalculator:
                 if abs(inner_prod - expected) > TOLERANCE:
                     return False
         return True
-    
+
     def _check_column_orthogonality(self) -> bool:
         """Column orthogonality relations"""
         for i in range(len(self.class_sizes)):
@@ -456,6 +459,63 @@ class CharacterCalculator:
                 inner_prod = round(inner_prod.real)
                 expected = self.group_order // self.class_sizes[i] if i == j else 0
                 if abs(inner_prod - expected) > TOLERANCE:
+                    return False
+        return True
+
+    def _irrep_dim(self, char) -> int:
+        """Get the dimension of an irrep from its character at E"""
+        return int(round(char[0].real if isinstance(char[0], complex) else char[0]))
+
+    def _check_tensor_products(self) -> bool:
+        """
+        Verify all tensor products decompose to integer multiplicities.
+        Checks every pair (i, j) of irreps: χ_i ⊗ χ_j must have integer
+        multiplicities in its irrep decomposition.
+        """
+        irrep_names = list(self.irreps.keys())
+        for _, name1 in enumerate(irrep_names):
+            for _, name2 in enumerate(irrep_names):
+                try:
+                    char1 = self.irreps[name1]
+                    char2 = self.irreps[name2]
+                    tensor_char = [a * b for a, b in zip(char1, char2)]
+                    self.decompose(tensor_char)
+                except ValueError:
+                    return False
+        return True
+
+    def _check_sym_products(self) -> bool:
+        """
+        Verify symmetric products Sym^n(χ_i) for n=2..5.
+        Checks that each symmetric power decomposes into integer
+        multiplicities of irreps.
+        """
+        for _, char in self.irreps.items():
+            for n in range(2, 6):
+                try:
+                    sym_char = self.symmetric_product_general(char, n)
+                    self.decompose(sym_char)
+                except ValueError:
+                    return False
+        return True
+
+    def _check_antisym_products(self) -> bool:
+        """
+        Verify antisymmetric products Alt^n(χ_i) for n=2..5.
+        Checks that each antisymmetric power decomposes into integer
+        multiplicities of irreps.
+        """
+        for _, char in self.irreps.items():
+            dim = self._irrep_dim(char)
+            for n in range(2, 6):
+                if n > dim:
+                    # Alt^n of a dim-dimensional space is 0 for n > dim,
+                    # so the character is all-zero and trivially valid.
+                    continue
+                try:
+                    alt_char = self.antisymmetric_product_general(char, n)
+                    self.decompose(alt_char)
+                except ValueError:
                     return False
         return True
     

@@ -1090,9 +1090,70 @@ class CharacterTableDatabase:
                 # 向量表示（三维旋转/反射表示）的特征标
                 'vector_char': [3, 0, -1, 1, -1, -3, -1, 0, 1, 1],
                 'category': 'Cubic groups'
+            },
+
+            # ---- I groups ----
+            # I 群 (Icosahedral group)
+            'I': {
+                'irreps': {
+                    'A':  [1, 1, 1, 1, 1],
+                    'T1': [3, eta_plus, eta_minus, 0, -1],
+                    'T2': [3, eta_minus, eta_plus, 0, -1],
+                    'G':  [4, -1, -1, 1, 0],
+                    'H':  [5, 0, 0, -1, 1]
+                },
+                'class_sizes': [1, 12, 12, 20, 15],
+                'class_names': ['E', '12C₅', '12C₅²', '20C₃', '15C₂'],
+                'order': 60,
+                'class_cycles': {
+                    0: (1, [0]),                    # E
+                    1: (5, [0, 1, 2, 2, 1]),       # 12C₅: C₅ → C₅² (C₅³=C₅², C₅⁴=C₅)
+                    2: (5, [0, 2, 1, 1, 2]),       # 12C₅²: C₅² → C₅⁴=C₅ (C₅⁶=C₅, C₅⁸=C₅²)
+                    3: (3, [0, 3, 3]),             # 20C₃: C₃ → C₃² (same class)
+                    4: (2, [0, 4])                 # 15C₂: C₂
+                },
+                'vector_char': [3, eta_plus, eta_minus, 0, -1],
+                'category': 'I groups',
+                'special_notes': 'η⁺ = (1+√5)/2 ≈ 1.618, η⁻ = (1-√5)/2 ≈ -0.618'
+            },
+
+            # I_h 群 (Full icosahedral group)
+            'I_h': {
+                'irreps': {
+                    'Ag':  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                    'T1g': [3, eta_plus, eta_minus, 0, -1, 3, eta_minus, eta_plus, 0, -1],
+                    'T2g': [3, eta_minus, eta_plus, 0, -1, 3, eta_plus, eta_minus, 0, -1],
+                    'Gg':  [4, -1, -1, 1, 0, 4, -1, -1, 1, 0],
+                    'Hg':  [5, 0, 0, -1, 1, 5, 0, 0, -1, 1],
+                    'Au':  [1, 1, 1, 1, 1, -1, -1, -1, -1, -1],
+                    'T1u': [3, eta_plus, eta_minus, 0, -1, -3, two_cos72, two_cos144, 0, 1],
+                    'T2u': [3, eta_minus, eta_plus, 0, -1, -3, two_cos144, two_cos72, 0, 1],
+                    'Gu':  [4, -1, -1, 1, 0, -4, 1, 1, -1, 0],
+                    'Hu':  [5, 0, 0, -1, 1, -5, 0, 0, 1, -1]
+                },
+                'class_sizes': [1, 12, 12, 20, 15, 1, 12, 12, 20, 15],
+                'class_names': ['E', '12C₅', '12C₅²', '20C₃', '15C₂',
+                                'i', '12S₁₀', '12S₁₀³', '20S₆', '15σ'],
+                'order': 120,
+                'class_cycles': {
+                    0: (1, [0]),                        # E
+                    1: (5, [0, 1, 2, 2, 1]),           # 12C₅
+                    2: (5, [0, 2, 1, 1, 2]),           # 12C₅²
+                    3: (3, [0, 3, 3]),                 # 20C₃
+                    4: (2, [0, 4]),                    # 15C₂
+                    5: (2, [0, 5]),                    # i
+                    6: (10, [0, 6, 1, 7, 2, 5, 2, 7, 1, 6]),  # 12S₁₀ (= i·C₅²)
+                    7: (10, [0, 7, 2, 6, 1, 5, 1, 6, 2, 7]),  # 12S₁₀³ (= i·C₅)
+                    8: (6, [0, 8, 3, 5, 3, 8]),        # 20S₆ (= i·C₃)
+                    9: (2, [0, 9])                     # 15σ (= i·C₂)
+                },
+                'vector_char': [3, eta_plus, eta_minus, 0, -1,
+                                -3, two_cos72, two_cos144, 0, 1],
+                'category': 'I groups',
+                'special_notes': 'η⁺ = (1+√5)/2 ≈ 1.618, η⁻ = (1-√5)/2 ≈ -0.618, 2cos72° ≈ 0.618, 2cos144° ≈ -1.618'
             }
         }
-        
+
         for name, data in tables_data.items():
             self.tables[name] = CharacterTable.from_dict(name, data)
     

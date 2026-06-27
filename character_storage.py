@@ -12,14 +12,17 @@ from pathlib import Path
 class CharacterStorage:
     """Manages character storage and persistence"""
     
-    def __init__(self, storage_file: str = 'stored_characters.json'):
+    def __init__(self, storage_file: str = 'stored_characters.json',
+                 quiet: bool = False):
         """
         Initialize character storage
-        
+
         Args:
             storage_file: JSON file path for persistent storage
+            quiet: Suppress loading message (for CLI mode)
         """
         self.storage_file = storage_file
+        self.quiet = quiet
         self.stored_characters: Dict[str, Dict[str, Dict]] = {}
         self.load_characters()
     
@@ -43,7 +46,7 @@ class CharacterStorage:
         }
         
         self.save_characters()
-        print(f"✓ Character '{char_name}' stored in {group_name}")
+        print(f"[OK] Character '{char_name}' stored in {group_name}")
     
     def get_character(self, group_name: str, char_name: str) -> Optional[Tuple[List, str]]:
         """
@@ -91,7 +94,7 @@ class CharacterStorage:
             char_name in self.stored_characters[group_name]):
             del self.stored_characters[group_name][char_name]
             self.save_characters()
-            print(f"✓ Character '{char_name}' deleted from {group_name}")
+            print(f"[OK] Character '{char_name}' deleted from {group_name}")
             return True
         return False
     
@@ -148,7 +151,8 @@ class CharacterStorage:
                         }
                 
                 total = sum(len(chars) for chars in self.stored_characters.values())
-                print(f"✓ Loaded {total} stored characters")
+                if not self.quiet:
+                    print(f"[OK] Loaded {total} stored characters")
         except Exception as e:
             print(f"✗ Error loading characters: {e}")
     
@@ -165,7 +169,7 @@ class CharacterStorage:
                 f.write("Values:\n")
                 for i, val in enumerate(character):
                     f.write(f"{i},{val}\n")
-            print(f"✓ Exported to {filename}")
+            print(f"[OK] Exported to {filename}")
             return True
         except Exception as e:
             print(f"✗ Error exporting: {e}")

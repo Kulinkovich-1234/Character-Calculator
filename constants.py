@@ -20,7 +20,8 @@ CATEGORY_ORDER = [
     'Dnh groups',
     'Dnd groups',
     'Sn groups',
-    'Cubic groups'
+    'Cubic groups',
+    'I groups'
 ]
 
 # Mathematical constants
@@ -29,6 +30,6 @@ SQRT3 = 3 ** 0.5
 SQRT5 = 5 ** 0.5
 
 # Version and metadata
-__version__ = "2.0.0"
+__version__ = "3.0.0"
 __author__ = "Jianwen Ma"
 __license__ = "MIT"
